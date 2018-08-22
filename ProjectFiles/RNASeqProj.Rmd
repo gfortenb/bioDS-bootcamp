@@ -3,11 +3,11 @@ title: "RNA Sequencing Differential Analysis Project"
 author: "Gavin Fortenberry"
 date: "August 15th, 2018"
 output:
-  pdf_document:
-    toc: yes
   html_document:
     toc: yes
     toc_float: yes
+  pdf_document:
+    toc: yes
   word_document:
     toc: yes
 ---
@@ -449,13 +449,16 @@ scatterplot2
 ##Exploratory plots
 ###Exploratory plot1
 ```{r dataset1 gene count plots}
-DESeq2::plotCounts(dseq_set_htseq, "CALR", intgroup = "diagnosis")
+DESeq2::plotCounts(dseq_set_htseq, "CALR", intgroup = "diagnosis",main = "Presence of CALR Mutation")
+
 #DESeq2::plotCounts(dseq_set_htseq, "JAK2", intgroup = "diagnosis")
 #DESeq2::plotCounts(dseq_set_htseq, "A1BG", intgroup = "diagnosis")
 #DESeq2::plotCounts(dseq_set_htseq, "ADAMTS7", intgroup = "diagnosis")
-#what is MF
-# methods slide
-# flow chart
+
+```
+```{r}
+DESeq2::plotCounts(dseq_set_salmon, "CALR", intgroup = "diagnosis",main = "Presence of CALR Mutation salmon")
+
 ```
 
 ```{r}
@@ -517,15 +520,16 @@ barplot(venn_summary_mat, main = "Summary of 'HTSEQ' vs. 'SALMON' Gene Counts", 
 
 ```{r }
 L2FC_SUM1 <- summarize(gene_l2fc_htseqSalmon1_combo, 
-                          HTSeq_L2FC_only = sum((!is.na(L2FC_HTSEQ)) & (is.na(L2FC_SALMON))),
-                          SalmonL2FConly = sum((is.na(L2FC_HTSEQ)) & (!is.na(L2FC_SALMON))),
+                          Only_HTSeq_L2FC = sum((!is.na(L2FC_HTSEQ)) & (is.na(L2FC_SALMON))),
+                          Only_Salmon_L2FC = sum((is.na(L2FC_HTSEQ)) & (!is.na(L2FC_SALMON))),
                           Both_L2FC = sum((!is.na(L2FC_HTSEQ)) & (!is.na(L2FC_SALMON))))
                           #Neither_L2FC = sum((is.na(L2FC_HTSEQ)) & (is.na(L2FC_SALMON))))
 L2FC_SUM1
 
 L2FC_SUM1_mat <- as.matrix(L2FC_SUM1)
-barplot(L2FC_SUM1_mat, main = "Summary of 'HTSEQ' vs. 'SALMON' L2FC", xlab = "Tool", ylab = "Number of Genes", col="blue")
-
+jpeg(file = "L2FC_SUM1.jpeg")
+barplot(L2FC_SUM1_mat, main = "Summary of 'HTSEQ' vs. 'SALMON' Log2 Fold Change", xlab = "Tool", ylab = "Number of Genes", col="gold")
+dev.off()
 
 ```
 ```
