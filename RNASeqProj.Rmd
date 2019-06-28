@@ -102,9 +102,9 @@ The function used to actually combine the two dataframes into one is the "full_j
 "str()" is short for structure, and is a base R function that allows the user to get an idea of the format of the data they are looking at
 ```{r First Data Frame Creations/Combine, echo=TRUE, warning=FALSE}
 
-setwd("C:/Users/gavin/OneDrive/Desktop/WorkStuff/bioDS-bootcamp/bioDS-bootcamp-master")
+#setwd("C:/Users/gavin/OneDrive/Desktop/WorkStuff/bioDS-bootcamp/bioDS-bootcamp-master")
 
-getwd()
+#getwd()
 
 df_pheno <- read.csv(file="RNASeqData/phenotypeTable.csv", header =TRUE)
 #bioDS-bootcamp/bioDS-bootcamp-master/RNASeqData
@@ -132,7 +132,7 @@ write.csv(df_combined, file = "ProjectFiles/combineddata.csv",
 
 The read.csv function is used to re-read the newly written CSV to make sure the data is the same as it was when written. The "str()" and "summary" functions are used to compare the statistics of the new dataframe to the original created one to confirm similarity.
 ```{r Test Output of newly written CSV, eval=FALSE, include=TRUE}
-test_set_combined_data <- read.csv("combineddata.csv")
+test_set_combined_data <- read.csv("ProjectFiles/combineddata.csv")
 str(test_set_combined_data)
 ```
 
@@ -141,7 +141,7 @@ Makes a list of directories(folders) with the R base function "list.dirs" which 
 
 ```{r Creation of List of Directories}
 #":/Users/gfortenb/Documents/GitHub/bioDS-bootcamp/RNASeqData"
-RNADirectoryList = list.dirs(path = "bioDS-bootcamp/bioDS-bootcamp-master/RNASeqData", recursive = FALSE)
+RNADirectoryList = list.dirs(path = "RNASeqData", recursive = FALSE)
 #bioDS-bootcamp/bioDS-bootcamp-master/RNASeqData
 ```
 
@@ -178,7 +178,7 @@ listOf_alldf <- lapply(seq(1:nrow(htseq_FileID_df)),
 ###SALMON HERE<<<---
 ```{r Reads in salmon count data/make DF}
 ### Reads in data/creates salmon counts dataframe
-salmonCounts_df <-read.csv(file="bioDS-bootcamp/bioDS-bootcamp-master/RNASeqData/2018-08-06_SalmonGeneLevelCounts.csv", 
+salmonCounts_df <-read.csv(file="RNASeqData/2018-08-06_SalmonGeneLevelCounts.csv", 
                      header =TRUE)
 
 ```
