@@ -1,7 +1,7 @@
 ---
 title: "RNA Sequencing Differential Analysis Project"
 author: "Gavin Fortenberry"
-date: "June 28th, 2019"
+date: "July 17th, 2019"
 output:
   html_document:
     toc: yes
@@ -14,7 +14,7 @@ editor_options:
   chunk_output_type: inline
 ---
 # Introduction
-
+##NOTE: CODE WORKS ON FHCRC CLUSTER AS OF 7/17/19
 ### What is Myleofibrosis?
 - Myleofibrosis is a type of bone marrow cancer in which an rapidly increasing number of blood forming cells form a fibrous like structure that sometimes leads to acute leukemia. 
 Certain genotypes like the JAK2 V617F mutation have been a determining factor of Blast Transformation in Myleofibrosis.
@@ -58,7 +58,7 @@ ultimate goal is to make observations/conclusions about possible differences in 
 Installs packages of functions that can be used to help manipulate variables and data libraries. These packages can be installed through base R code that downloads them and installs them into R studio. Then certain programming phrases can be used to do new functions in connection with base R programming phrases, with an indicator of the package being used mentioned before using that package's functions. For example, if I wanted to use a function of the "dplyr" package, I would write -> "dplyr::(insert function here)(insert arguments of functions here)". Note that functions or phrases that are in base R programming vocabulary do not require a name indicator of the package being used, as it is from the base software and the software knows how to interperet those phrases without an idicator of a package. It is still required to write names of functions from Base R that are wanting to be used though, and if shortcut variables for functions are desired then you can assign new variables to those functions.
 
 Bioconductor packages need to be installed by "biocLite" rather than install.packages which is for CRAN/base R
-```{r Install Packages, eval=FALSE, message=FALSE, warning=FALSE, include=TRUE}
+```{r Install Packages, eval=FALSE, message=FALSE, warning=FALSE, include=FALSE}
 install.packages("dplyr")
 install.packages("knitr")
 install.packages("rmarkdown")
